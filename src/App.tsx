@@ -1,35 +1,54 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+
+const initTiles = () => {
+  const tiles = [...Array(136).keys()].map((n) => n % 34);
+  shufTiles(tiles);
+  return tiles;
+};
+
+const shufTiles = (tiles: number[]) => {
+  for (let i = tiles.length - 1; i >= 0; i--) {
+    const r = Math.floor(Math.random() * (i + 1));
+    [tiles[i], tiles[r]] = [tiles[r], tiles[i]];
+  }
+};
+
+const sortTiles = (tiles: number[]) => {
+  return tiles
+    .map((n) => (n < 7) ? n + 34 : n)
+    .sort((a, b) => a - b)
+    .map((n) => (n > 33) ? n - 34 : n);
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  let tiles = initTiles();
+  const [hands, setHands] = useState<number[]>([]);
+
+  const refreshHands = () => {
+    tiles = initTiles();
+    setHands(sortTiles(tiles.slice(0, 14)));
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>何切る?</h1>
+      <div className="hands">
+        {hands.map((hand, i) => (
+          <img
+            key={i}
+            src={`/png/U+${(0x1F000 + hand).toString(16).toUpperCase()}.png`}
+            className="hand"
+          />
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+      <div className="buttons">
+        <button className="button" onClick={refreshHands}>
+          配牌（リセット）
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
