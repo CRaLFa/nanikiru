@@ -86,7 +86,7 @@ function App() {
         ))}
       </div>
       <div className="buttons">
-        <button className="button" onClick={refreshHands}>
+        <button className="reset" onClick={refreshHands}>
           配牌（リセット）
         </button>
       </div>
