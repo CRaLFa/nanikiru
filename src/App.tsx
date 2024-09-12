@@ -1,8 +1,6 @@
 import { PointerEvent, useState } from "react";
 import "./App.css";
 
-const HANDS_COUNT = 14;
-
 const initTiles = () => {
   const tiles = [...Array(136).keys()].map((n) => n % 34);
   // shuffle tiles
@@ -15,14 +13,14 @@ const initTiles = () => {
 
 const sortTiles = (tiles: number[]) => {
   return tiles
-    .map((n) => (n < 7) ? n + 34 : n)
+    .map((n) => n < 7 ? n + 34 : n)
     .sort((a, b) => a - b)
-    .map((n) => (n > 33) ? n - 34 : n);
+    .map((n) => n > 33 ? n - 34 : n);
 };
 
 const getImageUrl = (hand: number) => {
   const fileName = `U+${(0x1F000 + hand).toString(16).toUpperCase()}.png`;
-  return `${import.meta.env.BASE_URL}png/${fileName}`;
+  return `${import.meta.env.BASE_URL}images/${fileName}`;
 };
 
 function App() {
@@ -36,7 +34,7 @@ function App() {
     setDrawn(false);
     setSelected(-1);
     tiles = initTiles();
-    setHands(sortTiles(tiles.splice(0, HANDS_COUNT)));
+    setHands(sortTiles(tiles.splice(0, 14)));
   };
 
   const handClicked = (e: PointerEvent<HTMLImageElement>) => {

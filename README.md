@@ -1,3 +1,10 @@
 # nanikiru
 
-React + TypeScript + Vite
+React + TypeScript
+
+## Run dev-server
+
+```sh
+$ npm i
+$ npm run dev
+```
