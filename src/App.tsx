@@ -23,9 +23,9 @@ const getImageUrl = (hand: number) => {
   return `${import.meta.env.BASE_URL}images/${fileName}`;
 };
 
-function App() {
-  let tiles = initTiles();
+let tiles: number[];
 
+function App() {
   const [hands, setHands] = useState<number[]>([]);
   const [selected, setSelected] = useState(-1);
   const [drawn, setDrawn] = useState(false);
