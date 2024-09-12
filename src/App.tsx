@@ -23,7 +23,7 @@ const getImageUrl = (hand: number) => {
   return `${import.meta.env.BASE_URL}images/${fileName}`;
 };
 
-let tiles: number[];
+let deck: number[];
 
 function App() {
   const [hands, setHands] = useState<number[]>([]);
@@ -48,7 +48,7 @@ function App() {
     }
     const idx = parseInt(e.target.id.replace("hand_", ""), 10);
     if (idx === selected) {
-      if (tiles.length < 1) {
+      if (deck.length < 1) {
         window.alert("山に牌がありません");
         refreshHands();
         return;
@@ -58,7 +58,7 @@ function App() {
         let arr = [...hands];
         arr.splice(idx, 1);
         arr = sortTiles(arr);
-        arr.push(tiles.shift()!);
+        arr.push(deck.shift()!);
         return arr;
       });
       setDrawn(true);
@@ -70,8 +70,8 @@ function App() {
   const refreshHands = () => {
     setDrawn(false);
     setSelected(-1);
-    tiles = initTiles();
-    setHands(sortTiles(tiles.splice(0, 14)));
+    deck = initTiles();
+    setHands(sortTiles(deck.splice(0, 14)));
   };
 
   return (
