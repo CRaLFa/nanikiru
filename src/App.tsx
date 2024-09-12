@@ -30,11 +30,15 @@ function App() {
   const [selected, setSelected] = useState(-1);
   const [drawn, setDrawn] = useState(false);
 
-  const refreshHands = () => {
-    setDrawn(false);
-    setSelected(-1);
-    tiles = initTiles();
-    setHands(sortTiles(tiles.splice(0, 14)));
+  const getHandClass = (idx: number) => {
+    let handClass = "hand";
+    if (idx === selected) {
+      handClass += " selected";
+    }
+    if (drawn && idx === hands.length - 1) {
+      handClass += " draw";
+    }
+    return handClass;
   };
 
   const handClicked = (e: PointerEvent<HTMLImageElement>) => {
@@ -63,17 +67,19 @@ function App() {
     }
   };
 
+  const refreshHands = () => {
+    setDrawn(false);
+    setSelected(-1);
+    tiles = initTiles();
+    setHands(sortTiles(tiles.splice(0, 14)));
+  };
+
   return (
     <>
       <h1>何切る?</h1>
       <div id="hands">
         {hands.map((hand, i) => (
-          <div
-            key={i}
-            className={`hand ${i === selected ? "selected" : ""} ${
-              drawn && i === hands.length - 1 ? "draw" : ""
-            }`}
-          >
+          <div key={i} className={getHandClass(i)}>
             <img
               src={getImageUrl(hand)}
               id={`hand_${i}`}
