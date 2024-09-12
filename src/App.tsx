@@ -20,6 +20,11 @@ const sortTiles = (tiles: number[]) => {
     .map((n) => (n > 33) ? n - 34 : n);
 };
 
+const getImageUrl = (hand: number) => {
+  const fileName = `U+${(0x1F000 + hand).toString(16).toUpperCase()}.png`;
+  return `${import.meta.env.BASE_URL}png/${fileName}`;
+};
+
 function App() {
   let tiles = initTiles();
 
@@ -72,7 +77,7 @@ function App() {
             }`}
           >
             <img
-              src={`/png/U+${(0x1F000 + hand).toString(16).toUpperCase()}.png`}
+              src={getImageUrl(hand)}
               id={`hand_${i}`}
               className="hand-img"
               onClick={handClicked}
