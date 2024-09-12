@@ -1,5 +1,5 @@
 import { PointerEvent, useState } from "react";
-import "./App.css";
+import "./App.scss";
 
 const initTiles = () => {
   const tiles = [...Array(136).keys()].map((n) => n % 34);
@@ -11,7 +11,7 @@ const initTiles = () => {
   return tiles;
 };
 
-const sortTiles = (tiles: number[]) => {
+const sort = (tiles: number[]) => {
   return tiles
     .map((n) => n < 7 ? n + 34 : n)
     .sort((a, b) => a - b)
@@ -50,14 +50,14 @@ function App() {
     if (idx === selected) {
       if (deck.length < 1) {
         window.alert("山に牌がありません");
-        refreshHands();
+        reloadHands();
         return;
       }
       setSelected(-1);
       setHands(() => {
         let arr = [...hands];
         arr.splice(idx, 1);
-        arr = sortTiles(arr);
+        arr = sort(arr);
         arr.push(deck.shift()!);
         return arr;
       });
@@ -67,11 +67,11 @@ function App() {
     }
   };
 
-  const refreshHands = () => {
+  const reloadHands = () => {
     setDrawn(false);
     setSelected(-1);
     deck = initTiles();
-    setHands(sortTiles(deck.splice(0, 14)));
+    setHands(sort(deck.splice(0, 14)));
   };
 
   return (
@@ -90,7 +90,7 @@ function App() {
         ))}
       </div>
       <div className="buttons">
-        <button className="reset" onClick={refreshHands}>
+        <button className="reset" onClick={reloadHands}>
           配牌（リセット）
         </button>
       </div>

@@ -16,19 +16,20 @@
 
 .hand {
   width: 6vw;
-}
 
-.hand.selected {
-  align-self: flex-start;
-}
+  &.selected {
+    align-self: flex-start;
+  }
 
-.hand.draw {
-  margin-left: 2vw;
+  &.draw {
+    margin-left: 2vw;
+  }
 }
 
 .hand-img {
   width: 100%;
   object-fit: contain;
+  cursor: pointer;
 }
 
 .reset {
