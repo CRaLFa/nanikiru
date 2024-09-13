@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "npm run build && gsutil -m rsync -d -r ./dist gs://k-morita-static/nanikiru"
+    "deploy": "npm run build && gsutil -m rsync -d -r ./dist gs://k-morita-static/nanikiru",
+    "fmt": "deno fmt"
   },
   "dependencies": {
     "react": "^18.3.1",
