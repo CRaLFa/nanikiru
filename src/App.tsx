@@ -31,14 +31,14 @@ function App() {
   const [drawn, setDrawn] = useState(false)
 
   const getHandClass = (idx: number) => {
-    const classList = ['hand']
+    const classes = ['hand']
     if (idx === selected) {
-      classList.push('selected')
+      classes.push('selected')
     }
     if (drawn && idx === hands.length - 1) {
-      classList.push('draw')
+      classes.push('draw')
     }
-    return classList.join(' ')
+    return classes.join(' ')
   }
 
   const handClicked = (e: PointerEvent<HTMLImageElement>) => {
