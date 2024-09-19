@@ -23,12 +23,12 @@
   &.drawn {
     margin-left: 2vw;
   }
-}
 
-.hand-img {
-  width: 100%;
-  object-fit: contain;
-  cursor: pointer;
+  > img {
+    width: 100%;
+    object-fit: contain;
+    cursor: pointer;
+  }
 }
 
 .reset {

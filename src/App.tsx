@@ -75,11 +75,7 @@ function App() {
       <div id='hands'>
         {hands.map((hand, i) => (
           <div key={i} className={getHandClass(i)}>
-            <img
-              src={getImageUrl(hand)}
-              className='hand-img'
-              onClick={() => handClicked(i)}
-            />
+            <img src={getImageUrl(hand)} onClick={() => handClicked(i)} />
           </div>
         ))}
       </div>
