@@ -50,7 +50,7 @@ function App() {
     if (idx === selected) {
       if (deck.length < 1) {
         window.alert('山に牌がありません')
-        reloadHands()
+        resetHands()
         return
       }
       setSelected(-1)
@@ -67,7 +67,7 @@ function App() {
     }
   }
 
-  const reloadHands = () => {
+  const resetHands = () => {
     setDrawn(false)
     setSelected(-1)
     deck = initTiles()
@@ -90,7 +90,7 @@ function App() {
         ))}
       </div>
       <div className='buttons'>
-        <button className='reset' onClick={reloadHands}>
+        <button className='reset' onClick={resetHands}>
           配牌（リセット）
         </button>
       </div>
