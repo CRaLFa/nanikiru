@@ -36,7 +36,7 @@ function App() {
       classes.push('selected')
     }
     if (drawn && idx === hands.length - 1) {
-      classes.push('draw')
+      classes.push('drawn')
     }
     return classes.join(' ')
   }
