@@ -1,3 +1,5 @@
+$handW: 6vw;
+
 #root {
   margin: 0 auto;
   text-align: center;
@@ -6,22 +8,22 @@
 
 #hands {
   margin: 2em 0;
-  height: 12vw;
+  height: calc($handW * 2);
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  column-gap: 0.2vw;
+  column-gap: calc($handW / 30);
 }
 
 .hand {
-  width: 6vw;
+  width: $handW;
 
   &.selected {
     align-self: flex-start;
   }
 
   &.drawn {
-    margin-left: 2vw;
+    margin-left: calc($handW / 2);
   }
 
   > img {
