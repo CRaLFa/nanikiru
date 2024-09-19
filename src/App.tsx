@@ -1,4 +1,4 @@
-import { PointerEvent, useState } from 'react'
+import { useState } from 'react'
 import './App.scss'
 
 const initTiles = () => {
@@ -41,12 +41,7 @@ function App() {
     return classes.join(' ')
   }
 
-  const handClicked = (e: PointerEvent<HTMLImageElement>) => {
-    // console.log(e);
-    if (!(e.target instanceof HTMLImageElement)) {
-      return
-    }
-    const idx = parseInt(e.target.id.replace('hand_', ''), 10)
+  const handClicked = (idx: number) => {
     if (idx === selected) {
       if (deck.length < 1) {
         window.alert('山に牌がありません')
@@ -82,9 +77,8 @@ function App() {
           <div key={i} className={getHandClass(i)}>
             <img
               src={getImageUrl(hand)}
-              id={`hand_${i}`}
               className='hand-img'
-              onClick={handClicked}
+              onClick={() => handClicked(i)}
             />
           </div>
         ))}
