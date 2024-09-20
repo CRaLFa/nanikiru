@@ -1,0 +1,25 @@
+{
+  "typescript": {
+    "semiColons": "asi",
+    "quoteStyle": "preferSingle",
+    "jsx.quoteStyle": "preferSingle",
+    "arrowFunction.useParentheses": "force"
+  },
+  "json": {
+  },
+  "markdown": {
+  },
+  "malva": {
+  },
+  "excludes": [
+    "**/node_modules",
+    "**/*-lock.json",
+    "./dist"
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.93.0.wasm",
+    "https://plugins.dprint.dev/json-0.19.3.wasm",
+    "https://plugins.dprint.dev/markdown-0.17.8.wasm",
+    "https://plugins.dprint.dev/g-plane/malva-v0.10.1.wasm"
+  ]
+}
