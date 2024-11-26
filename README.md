@@ -2,7 +2,7 @@
 
 Mahjong "Nani kiru ? (何切る?)" simulator
 
-<https://storage.googleapis.com/k-morita-static/nanikiru/index.html>
+<https://storage.googleapis.com/1-441408-static/nanikiru/index.html>
 
 ## Run dev-server
 
